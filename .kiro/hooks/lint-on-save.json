@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Lint on Save",
+      "trigger": "PostFileSave",
+      "description": "Run ESLint on JS/JSX/CSS file saves to catch common mistakes early",
+      "matcher": "\\.(jsx?|css)$",
+      "action": {
+        "type": "command",
+        "command": "cd cloudguard && npx eslint --no-eslintrc -c '{\"env\":{\"browser\":true,\"es2021\":true},\"parserOptions\":{\"ecmaVersion\":\"latest\",\"sourceType\":\"module\",\"ecmaFeatures\":{\"jsx\":true}},\"rules\":{\"no-unused-vars\":\"warn\",\"no-undef\":\"warn\"}}' --ext .js,.jsx src/ 2>&1 | head -40"
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Security Check Review",
+      "trigger": "PostFileSave",
+      "description": "Validate checks.js integrity whenever the security data file is saved",
+      "matcher": "src/data/checks\\.js$",
+      "action": {
+        "type": "agent",
+        "prompt": "The file src/data/checks.js was just saved. Review the DEFAULT_CHECKS array and verify: (1) every check has a unique id in kebab-case, (2) every check has a non-empty explanation and recommendation, (3) every check's category is one of: Identity, Data, Network, Visibility, Resilience. If any issue is found, report it clearly. Otherwise confirm the checks look good."
+      }
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+/* ===================================================
+   CloudGuard – Global Styles
+   Dark cybersecurity theme
+   =================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Colors */
+  --bg-base:        #0f172a;
+  --bg-surface:     #1e293b;
+  --bg-elevated:    #273548;
+  --border:         #334155;
+  --border-light:   #475569;
+
+  --text-primary:   #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted:     #64748b;
+
+  --accent:         #4f8ef7;
+  --accent-hover:   #3b7de8;
+
+  --green:          #22c55e;
+  --green-dim:      #16a34a;
+  --yellow:         #f59e0b;
+  --yellow-dim:     #d97706;
+  --red:            #ef4444;
+  --red-dim:        #dc2626;
+  --neutral:        #64748b;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+html, body {
+  height: 100%;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Card ──────────────────────────────────────────── */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+/* ── Buttons ───────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn--primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn--secondary {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+.btn--secondary:hover {
+  background: var(--border);
+}
+
+.btn--danger {
+  background: var(--red);
+  color: #fff;
+}
+.btn--danger:hover {
+  background: var(--red-dim);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+.btn--ghost:hover {
+  background: var(--bg-elevated);
+}
+
+/* ── Page structure ────────────────────────────────── */
+.page-header {
+  margin-bottom: var(--space-xl);
+}
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+.page-sub {
+  color: var(--text-secondary);
+  margin-top: var(--space-xs);
+  font-size: 1rem;
+}
+
+/* ── Security labels ───────────────────────────────── */
+.security-label {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.security-label--good     { background: rgba(34,197,94,0.15);  color: var(--green); }
+.security-label--warning  { background: rgba(245,158,11,0.15); color: var(--yellow); }
+.security-label--critical { background: rgba(239,68,68,0.15);  color: var(--red); }
+.security-label--neutral  { background: rgba(100,116,139,0.15); color: var(--neutral); }
+
+/* ── Progress bar ──────────────────────────────────── */
+.progress-bar-track {
+  height: 10px;
+  background: var(--bg-elevated);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress-bar-track.small {
+  height: 6px;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+.progress-bar-fill.fill--warning {
+  background: var(--yellow);
+}
+
+/* ── Empty state ───────────────────────────────────── */
+.empty-state {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: var(--space-2xl) var(--space-lg);
+}

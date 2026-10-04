@@ -1,0 +1,105 @@
+/* ── App Shell ─────────────────────────────────────── */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Top bar ───────────────────────────────────────── */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-xl);
+  height: 64px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.topbar-icon {
+  font-size: 1.5rem;
+}
+.topbar-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+.topbar-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  padding-left: var(--space-sm);
+  border-left: 1px solid var(--border);
+}
+
+/* ── Nav ───────────────────────────────────────────── */
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-link:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+.nav-link--active {
+  background: rgba(79,142,247,0.15);
+  color: var(--accent);
+}
+.nav-icon {
+  font-size: 1rem;
+}
+
+/* ── Main content ──────────────────────────────────── */
+.page-content {
+  flex: 1;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+/* ── Footer ────────────────────────────────────────── */
+.footer {
+  text-align: center;
+  padding: var(--space-lg);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Responsive ────────────────────────────────────── */
+@media (max-width: 600px) {
+  .topbar {
+    flex-direction: column;
+    height: auto;
+    padding: var(--space-md);
+    gap: var(--space-sm);
+  }
+  .topbar-sub { display: none; }
+  .nav-label { display: none; }
+  .nav-icon { font-size: 1.3rem; }
+  .page-content { padding: var(--space-md) var(--space-sm); }
+}

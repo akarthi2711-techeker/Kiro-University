@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Run Tests After Task",
+      "trigger": "PostTaskExec",
+      "description": "Run the test suite automatically after each spec task completes",
+      "action": {
+        "type": "command",
+        "command": "cd cloudguard && npm test 2>&1 | tail -30"
+      }
+    }
+  ]
+}

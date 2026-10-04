@@ -1,0 +1,198 @@
+.checklist-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* ── Filter bar ────────────────────────────────────── */
+.filter-bar {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+.filter-btn:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+.filter-btn--active {
+  background: rgba(79,142,247,0.15);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.filter-count {
+  background: var(--bg-elevated);
+  border-radius: 999px;
+  padding: 0 8px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ── Check list ────────────────────────────────────── */
+.check-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.check-item {
+  padding: 0;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.check-item--failed {
+  border-color: rgba(239,68,68,0.4);
+}
+
+/* ── Check item header ─────────────────────────────── */
+.check-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-lg);
+  cursor: pointer;
+  user-select: none;
+  gap: var(--space-md);
+}
+
+.check-item-header:hover {
+  background: var(--bg-elevated);
+}
+
+.check-item-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex: 1;
+  min-width: 0;
+}
+
+.check-index {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.check-item-title-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.check-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.check-category {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.check-item-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-shrink: 0;
+}
+
+.check-expand-icon {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+}
+
+/* ── Check item body ───────────────────────────────── */
+.check-item-body {
+  padding: var(--space-md) var(--space-lg) var(--space-lg);
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.check-explanation {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.check-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.check-actions-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-right: var(--space-xs);
+}
+
+/* ── Status buttons ────────────────────────────────── */
+.status-btn {
+  padding: 7px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.status-btn:hover:not(.status-btn--active) {
+  background: var(--border);
+}
+
+.status-btn--passed.status-btn--active {
+  background: rgba(34,197,94,0.2);
+  color: var(--green);
+  border-color: var(--green);
+}
+.status-btn--failed.status-btn--active {
+  background: rgba(239,68,68,0.2);
+  color: var(--red);
+  border-color: var(--red);
+}
+.status-btn--pending.status-btn--active {
+  background: rgba(100,116,139,0.2);
+  color: var(--text-secondary);
+  border-color: var(--neutral);
+}
+
+@media (max-width: 600px) {
+  .check-name { font-size: 0.85rem; }
+  .check-item-header { padding: var(--space-sm) var(--space-md); }
+}

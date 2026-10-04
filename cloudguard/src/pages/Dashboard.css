@@ -1,0 +1,130 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* ── Score hero ────────────────────────────────────── */
+.score-hero {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.score-hero-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.score-hero-desc {
+  color: var(--text-secondary);
+  max-width: 420px;
+  font-size: 0.95rem;
+}
+
+/* ── Stat grid ─────────────────────────────────────── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+}
+
+.stat-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  text-align: center;
+}
+
+.stat-card-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.stat-card-value {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+.stat-card-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.stat-card--passed  { border-top: 3px solid var(--green); }
+.stat-card--passed .stat-card-icon  { color: var(--green); }
+.stat-card--passed .stat-card-value { color: var(--green); }
+
+.stat-card--failed  { border-top: 3px solid var(--red); }
+.stat-card--failed .stat-card-icon  { color: var(--red); }
+.stat-card--failed .stat-card-value { color: var(--red); }
+
+.stat-card--pending { border-top: 3px solid var(--neutral); }
+.stat-card--pending .stat-card-icon  { color: var(--neutral); }
+
+.stat-card--total   { border-top: 3px solid var(--accent); }
+.stat-card--total .stat-card-icon  { color: var(--accent); }
+
+/* ── Progress card ─────────────────────────────────── */
+.progress-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.progress-card-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+.progress-hint {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ── Category card ─────────────────────────────────── */
+.category-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.category-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.category-row-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+.category-name { color: var(--text-primary); font-weight: 500; }
+.category-score { color: var(--text-muted); }
+
+/* ── Responsive ────────────────────────────────────── */
+@media (max-width: 700px) {
+  .score-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 400px) {
+  .stat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
