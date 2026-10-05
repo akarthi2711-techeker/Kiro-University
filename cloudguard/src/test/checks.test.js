@@ -75,6 +75,20 @@ describe('DEFAULT_CHECKS data integrity', () => {
       expect(check).not.toHaveProperty('status')
     }
   })
+
+  it('every check that has an awsExample has a non-empty string value (at least 20 chars)', () => {
+    for (const check of DEFAULT_CHECKS) {
+      if ('awsExample' in check) {
+        expect(typeof check.awsExample).toBe('string')
+        expect(check.awsExample.trim().length).toBeGreaterThanOrEqual(20)
+      }
+    }
+  })
+
+  it('all 10 checks include an awsExample field', () => {
+    const withExample = DEFAULT_CHECKS.filter((c) => c.awsExample && c.awsExample.trim().length > 0)
+    expect(withExample).toHaveLength(10)
+  })
 })
 
 describe('STATUS constants', () => {
@@ -109,7 +123,9 @@ describe('DEFAULT_CHECKS – property-based structure verification', () => {
           const hasRec      = typeof check.recommendation === 'string' && check.recommendation.length >= 20
           const validCat    = VALID_CATEGORIES.includes(check.category)
           const noStatus    = !('status' in check)
-          return hasId && hasName && hasExpl && hasRec && validCat && noStatus
+          const validAws    = !('awsExample' in check) ||
+            (typeof check.awsExample === 'string' && check.awsExample.trim().length >= 20)
+          return hasId && hasName && hasExpl && hasRec && validCat && noStatus && validAws
         }
       )
     )

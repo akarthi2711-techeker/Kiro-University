@@ -83,6 +83,12 @@ function CheckItem({ check, index, isExpanded, onToggle, onStatusChange }) {
       {isExpanded && (
         <div className="check-item-body">
           <p className="check-explanation">{check.explanation}</p>
+          {check.awsExample && (
+            <div className="check-aws-example">
+              <span className="check-aws-label">🔶 AWS example:</span>
+              <span className="check-aws-text">{check.awsExample}</span>
+            </div>
+          )}
           <div className="check-actions">
             <span className="check-actions-label">Mark as:</span>
             {Object.values(STATUS).map((s) => (

@@ -237,6 +237,29 @@ CloudGuard is a **learning and self-reflection tool**, not a compliance scanner:
 
 ---
 
+## MCP Usage
+
+The [MCP filesystem server](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem) was used during development to inspect and improve this project without leaving the Kiro IDE.
+
+### Operations performed
+
+| MCP Operation | Tool used | Purpose |
+|---------------|-----------|--------|
+| Inspect project tree | `mcp_filesystem_directory_tree` | Mapped every file and directory in the project (excluding `node_modules` and `dist`) |
+| Read source files | `mcp_filesystem_read_multiple_files` | Read `checks.js`, `score.js`, `storage.js`, `ChecklistContext.jsx`, `Dashboard.jsx`, `Checklist.jsx`, `Report.jsx`, `checks.test.js`, `score.test.js`, `security-domain.md`, `README.md` in parallel |
+| Get file metadata | `mcp_filesystem_get_file_info` | Checked sizes and timestamps before editing |
+| Rewrite data file | `mcp_filesystem_write_file` | Rewrote `src/data/checks.js` to add AWS-specific console paths to all 10 checks |
+| Patch UI component | `mcp_filesystem_edit_file` | Added the AWS example block to `Checklist.jsx` |
+| Patch styles | `mcp_filesystem_edit_file` | Added `.check-aws-example` styles to `Checklist.css` |
+| Update tests | `mcp_filesystem_edit_file` | Added two new assertions to `checks.test.js` covering the `awsExample` field |
+| Update README | `mcp_filesystem_edit_file` | Added this MCP Usage section |
+
+### What the improvement does
+
+Each of the 10 security checks now includes an `awsExample` field — a concrete AWS Console navigation path or CLI command that tells students *exactly* where to go to implement that practice. The field appears as an amber-highlighted block in the expanded checklist view, below the explanation text. It is optional in the data schema so the checks remain vendor-neutral by default, but the guidance is always there for AWS users.
+
+---
+
 ## License
 
 MIT — free to use, modify, and share for educational purposes.

@@ -192,7 +192,35 @@
   border-color: var(--neutral);
 }
 
+/* ── AWS Example block ────────────────────────────────── */
+.check-aws-example {
+  display: flex;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(255, 153, 0, 0.07);
+  border-left: 3px solid #ff9900;
+  border-radius: var(--radius-sm);
+  align-items: flex-start;
+}
+
+.check-aws-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ff9900;
+  white-space: nowrap;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.check-aws-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
 @media (max-width: 600px) {
   .check-name { font-size: 0.85rem; }
   .check-item-header { padding: var(--space-sm) var(--space-md); }
+  .check-aws-example { flex-direction: column; gap: 4px; }
 }
