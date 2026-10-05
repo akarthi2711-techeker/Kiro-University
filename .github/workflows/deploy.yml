@@ -1,0 +1,72 @@
+name: Deploy CloudGuard to GitHub Pages
+
+# Triggers:
+#  - Every push to master (keeps Pages in sync with main branch)
+#  - Manual trigger from the Actions tab (useful for re-deploying without a code change)
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+# Grant the workflow permission to write to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment; cancel any in-progress run
+# so a rapid push doesn't leave two deployments racing.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: cloudguard/package-lock.json
+
+      - name: Install dependencies
+        working-directory: cloudguard
+        run: npm ci
+
+      - name: Run tests
+        working-directory: cloudguard
+        run: npm test
+
+      - name: Build production bundle
+        working-directory: cloudguard
+        run: npm run build
+        # Vite reads base: '/Kiro-University/' from vite.config.js
+        # so all asset URLs in the output will be prefixed correctly.
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload only the Vite output folder
+          path: cloudguard/dist
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
